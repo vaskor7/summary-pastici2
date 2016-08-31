@@ -1,0 +1,258 @@
+% !TEX TS-program = xelatex
+% !TEX encoding = UTF-8
+
+% This is a simple template for a XeLaTeX document using the "article" class,
+% with the fontspec package to easily select fonts.
+
+\documentclass[11pt]{article} % use larger type; default would be 10pt
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathspec}
+\usepackage{fontspec} % Font selection for XeLaTeX; see fontspec.pdf for documentation
+%\defaultfontfeatures{Mapping=tex-text} % to support TeX conventions like ``---''
+\usepackage{xunicode} % Unicode support for LaTeX character names (accents, European chars, etc)
+\usepackage{xltxtra} % Extra customizations for XeLaTeX
+\usepackage{textcomp}
+\usepackage{pdflscape} %landscape pages in pdf (for better readabiliy)
+%\usepackage{parallel} %psaní do dvou sloupcù
+
+%\usepackage[style=authoryear]{biblatex}
+%\usepackage{harvard}
+%\bibliographystyle{econometrica}
+\usepackage[backend=biber]{biblatex}
+\addbibresource{PAP.bib}
+%\renewcommand{\refname}{References}
+
+%\setmainfont[Mapping=tex-text, Numbers=Proportional, Numbers=OldStyle]{Linux Libertine O} % set the main body font (\textrm), assumes Charis SIL is installed
+%\setsansfont{Deja Vu Sans}
+%\setmonofont{Deja Vu Mono}
+%\setmathrm[Mapping=tex-text, Numbers=Proportional]{Linux Libertine O}
+
+%\setmathrm[Mapping=tex-text, Numbers=Proportional]{Constantia}
+%\setallmainfonts[Mapping=tex-text, Numbers={Lining,Proportional}]{Constantia}
+%\setmainfont[Mapping=tex-text, Numbers={OldStyle,Proportional}]{Constantia}
+
+%místo proportional dám monospaced pro tabulkové stejnì široké setallmain, setmainfont dám do tabulky a tím zmìním ten environment.
+% other LaTeX packages.....
+%\usepackage[top=3.3cm, bottom=6.6cm, right=4.33cm, left=3.67cm]{geometry} %Rozložení A
+%\usepackage[left=2cm,top=2cm,bottom=2cm,right=2cm]{geometry}
+%\usepackage{geometry} % See geometry.pdf to learn the layout options. There are lots.
+%\usepackage[top=2.4cm, bottom=4cm, right=3cm, left=3cm]{geometry} %Rozložení C
+\usepackage[top=2.5cm, bottom=2.5cm, right=2.5cm, left=2.5cm]{geometry}
+\geometry{a4paper} % or letterpaper (US) or a5paper or....
+%\usepackage[parfill]{parskip} % Activate to begin paragraphs with an empty line rather than an indent
+
+\usepackage{graphicx} % support the \includegraphics command and options
+\usepackage{fancyvrb}  % vkládání txt souboru \VerbatimInput[baselinestretch=1,fontsize=\footnotesize,numbers=left]{yourFileInSameDirectory.txt}
+%\usepackage{verbatim}
+\usepackage{multirow} % pro tabulky a spojování øádkù
+%ze STATA
+\usepackage{dcolumn}
+\usepackage{booktabs}
+\usepackage{enumerate}
+%popisky
+
+%tohle vypisuje na každou stránku hlavièku
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{Pre-Analysis Plan} % Petr Polák
+%\chead{\date}
+\rhead{Theory}
+%\lfoot{}
+%\cfoot{\thepage}
+%\rfoot{}
+%\setlength{\headheight}{14pt}
+%\renewcommand{\headrulewidth}{0.4pt}
+%\renewcommand{\footrulewidth}{0pt}
+
+\usepackage[bottom]{footmisc}
+%\footnotemargin1.6em
+\usepackage{setspace}
+%\setstretch{1.11}
+\onehalfspacing
+\widowpenalty=10000
+\clubpenalty=10000
+
+%\usepackage{natbib}
+
+% this is the environment that controls my base lists
+\renewenvironment{itemize}
+{
+    \begin{list}{• \ }{} %•
+        \setlength{\topsep}{0pt}
+        \setlength{\parskip}{0pt}
+        \setlength{\partopsep}{0pt}
+        \setlength{\parsep}{0pt}
+        \setlength{\itemsep}{0pt}
+}
+{
+    \end{list}
+}
+
+%\usepackage{enumitem}
+%\setenumerate{nolistsep}
+%\setitemize{nolistsep}
+
+%\renewcommand{\thesubsection}{\arabic{subsection}}{INDENT}{BEFORESKIP}{AFTERSKIP}{STYLE} %pøedìláme èíslování z 0.1 na 1
+\renewcommand{\thesubsection}{\arabic{section}.\alph{subsection}} %pøedìláme èíslování z 0.1 na 1
+
+%\renewcommand{\labelitemii}{$\cdot$} %snaha dostat pøed subitem nìjakou znaèku
+
+\usepackage{caption} % Customizing figure etc. captions
+\captionsetup{
+  %justification=centerlast,
+  font=small,
+  labelfont=bf,
+  figurewithin=none}
+
+
+\usepackage{hyperref}
+\hypersetup{
+pdftitle={Microeconomics II},
+pdfauthor={V},
+pdfkeywords={},
+pdfborder=false,
+bookmarksnumbered=true,
+pdfstartview=FitH,
+pdfview=FitH,
+pdfpagelayout=OneColumn,
+}
+%\usepackage[all]{hypcap}
+
+
+\usepackage{polyglossia}
+\setdefaultlanguage{english}
+%\setotherlanguages{english}
+
+%\bibliography{literature}
+%\renewcommand{\refname}{References}
+
+\title{Pre-Analysis Plan \\ Delinquent identity of problematic children - An economic experiment}
+\author{Lubom\'ir Cingl  \ \ \ \ \  \ V\'aclav Korbel}
+%\date{} % Activate to display a given date or no date (if empty),
+%         % otherwise the current date is printed
+\date{April 2016}
+
+%\usepackage{showframe}                  %show edges of pages
+%\usepackage{acronym} %seznam zkatek
+%\usepackage[final]{pdfpages} %pro vkládání pdf souborù
+
+%-----<<<<<<<<<<<< DOCUMENT >>>>>>>>>>>>-----
+
+%Od Hanky
+%\renewcommand{\theenumi}{\alph{enumi})}
+%\renewcommand{\labelenumi}{\theenumi}
+
+\begin{document}
+\urlstyle{same}
+\maketitle
+
+\tableofcontents
+\newpage
+
+\section{Introduction}
+Preferences and traits develop during childhood and adolescence (Alm\aa s et al. 2010, Cunha et al. 2016, Fehr et al. 2008, Bettinger and Slonim 2007). The environment in which children grow up plays an important role (Alm\aa s et al. 2012, Bauer et al. 2014, Heckman 2006). Children may not only acquire bad behavioral and moral principles in poor environment but may also develop delinquent identities tied with those principles (Benabou and Tirole 2002). Moreover, those identities may be strengthened by parents and peers. One approach how to change such behavioral development is to place problematic children into special institutions (detention centers). There teachers, psychologists and special educators work with children to improve their development. However, it is still unclear what effect those institutions have on children. The detention centers may strengthen delinquent identities of children either through peer-effects or through separating them from the general society. Similar effects were shown with prisoners (Cohn et al. 2015). The present project investigates how detention centers affect delinquent identity and subsequently cooperative and norm-violating behavior of problematic children. We also plan to look at how it changes over time. In order to do this, we run a lab in the field experiment with children and adolescents from detention centers in the Czech Republic. \\
+
+This pre-analysis plan presents in the first chapter the design of the experiment where we discuss treatments, games and manipulation check. Chapter two presents empirical strategy and chapter three  hypotheses. 
+
+\section{Experimental design}
+Our overall study design combines two elements - priming and time comparison based on exogeneity of placing children into detention centers. Approach 1 (priming) will give us a clear measure of whether emphasizing an institution identity has a causal effect on outcome variables (cooperation and rule-violation). Approach 2 (time comparison) will show us how the effects of identity change over time. It is of policy relevance how interventions should be designed.
+
+\subsection{Our sample}
+We will run our experiment in detention centers in the Czech Republic. Detention centers are public correctional and educational institutions where are placed problematic children based on a writ. Unlike prisons detention centers resemble more regular schools with dormitories and children placed there do not have to commit a crime. They very often have problems with authorities (parents, teachers), truancy or aggression. The mean stay of a child in a detention center is approximately one year. The sampling period is planned to start in April 2016 and end during June 2016. The target sample is 300 children, which means 150 in each treatment. Based on power calculations it should identify \textbf{x SD effect}
+
+\subsection{Treatments}
+We have employed the identity priming developed by (Cohn et al. 2015) and adjusted it slightly for the environment of detention centers. Participants are randomly assigned either to the prime treatment or the control treatment. The purpose of the prime treatment is to make the institution (detention center) salient. \\
+
+The first part of the survey contains one question on subjective well-being and three questions on standard demographics. It is followed by five priming questions reminding them the institution where they stay (e.g. "For how long have you been here?", "How the staff treats you?", "If you could change two things in your detention center, what would it be?"). They to a large extent resemble to the original protocol. The other half of the participants (control treatment) is asked general questions about TV, computer and music (e.g. "What kind of music do you like?", "Do you like more TV or computer?"). \\
+
+We have made one change. The question on reasons for placement (incarceration in the original protocol) was left out. Detention center is not only correctional but also educational institution. We decided to measure the causal effect of institution on behavior which would be affected by questions on life before the placement.  \\
+
+The second part of the questionnaire will be followed by a standardized question on risk preferences (Dohmen et al. 2011) and two questions on mood. Risk preferences and mood may also be affected by the priming, therefore we will control for them in regressions.
+
+\subsection{Games}
+We plan to conduct three experimental games - the Prisoner's dilemma game, the Dictator game and a cheating task. Prisoner's dilemma game and dictator game will be in the randomized order to control for the order effect and cheating task will be always the third game.  \\
+
+\textbf{The Prisoner's dilemma game} - captures an individual willingness to cooperate and beliefs about cooperation of others. In this activity, children from detention centers will always be randomly matched with children from regular primary school. Then she is endowed with 20 tokens\footnote{one token is of app. value 3 CZK (10 euro cents)} and is asked to decide if to cooperate (framed as not change tokens) or not to cooperate (take 10 tokens from the other child and get 5 tokens in exchange). First, the decision is elicited unconditionally, then we ask about first and second order beliefs\footnote{incentivized by two tokens}  and then the decision is made conditionally. \\
+
+\textbf{The Dictator game} - captures an individual’s altruism towards others. In this activity,
+participants are informed that they were randomly paired with a child from primary school, other than in the Prisoner's dilemma game. Then each participant is endowed with 20 tokens and should decide how to distribute tokens between himself and the other kid. \\
+
+\textbf{The Cheating game} - captures the willingness to violate rules. In this activity, children receive a token and toss it twenty times. Each time a child tosses head, he receives a token, otherwise he does not. They report their tosses on a sheet of paper. Because they are not monitored, they can misreport their tosses.
+
+\subsection{Manipulation check}
+After playing all three games, we will measure if the priming was successful. We will ask participants to solve a word stem completion task. They will be presented with initial letters of three words which they finish. For example, they could complete the word stem "st..." with the delinquent-related word "steal" or unrelated words such as "store". We will compare the mental accessibility of delinquent-related constructs across treatments.
+
+\section{Empirical strategy}
+To identify the effect of identity (associated with detention center) on cooperation and rule violation, we compare treatment and control treatment. In particular, we use an indicator variable $Treatment_i$ (taking value 1 for those participants receiving the identity prime and taking value 0 for participants receiving the control treatment). Our main specification of interest is then: 
+\begin{align}
+	y_i = \beta_0 + \beta_1Treatment_i + \epsilon_i
+\end{align}
+Our main coefficient of interest is $\beta_1$ which measures the effect of identity prime on behavior. To control for alternative mechanisms than prime on identity, we will include several controls including risk preferences ($Risk_i$) and mood ($Mood_i$).
+\begin{align}
+	y_i = \beta_0 + \beta_1Treatment_i + \beta_2Risk_i + \beta_3Mood_i + \epsilon_i
+\end{align}
+Then we will analyze if $\beta_2$ and $\beta_3$ differ significantly from zero.
+
+\subsection{Change over time}
+Children are placed to detention centers based on a writ. They are sent there during the whole school year and their behavior is firstly reexamined at the end of given school year (end of June). It gives us the opportunity to study the effects of lenght of the stay on behavior during first months of the stay (up to 12 months) because it is not affected by selection. We will collect data at the end of the school year and therefore we will gather substantial variation in the length of stay across children.\footnote{We will examine the exogeneity of placement to detention centers in detail - differences across children coming in different parts of year, institutional details or decisions of judges.} Then, we estimate how our treatment effect influences differentially children with various length of stay:
+\begin{align}
+	y_i = \gamma_0 + \gamma_1Treatment_i*Length_i + \gamma_2Treatment_i + \gamma_3Length_i  + \epsilon_i
+\end{align}
+Where $Length_i$ is a number of months a child stays in a detention center. The estimation will be restricted to those coming this school year. In an alternative specification $Length_i$ is a dummy variable equals to 1 for stays shorter than 6 months and 0 otherwise. Our main coefficient of interest is $\gamma_1$ showing how the identity interacts with the time spent in the detention center. 
+
+\subsection{Heterogeneous treatment effects}
+We will explore heterogeneous treatment effects along several dimensions:
+\begin{enumerate}
+	\item Gender
+	\item Reasons for placement
+	\item Cognitive skills (if they have special education plan)
+	\item Family background (coming from family or orphanage)
+\end{enumerate}
+
+\subsection{Outcome variables}
+
+\textbf{Cooperation}: Measured as a share of cooperative choices. \\
+
+\textbf{Beliefs}: In order to disentangle the effects of identity on behavior and beliefs, we will estimate effects on both first and second-order beliefs in the Prisoner's dilemma game. \\
+
+\textbf{Altruism}: Measured as a number of tokens kept. It should also help us to disentangle effects on behavior and beliefs. \\
+
+\textbf{Cheating}: Measured as a share of heads reported. \\
+
+\textbf{Manipulation check}: Share of crime and delinquent related words in the word stem completion task.
+
+\section{Hypotheses}
+
+We expect that the institution (detention center) identity priming will have three distinct impacts on identity and subsequently on the behavior through different channels. First, we expect that the institution through save environment and systematic work weakens the delinquent identity of children which positively effects behavior. However, based on previous research (Walters 2003) the identity change does not happen in first few months (until half a year). Second, during the stay children are exposed to the peers who are also problematic children. Along with research on juvenile prisoners (Bayer et al. 2009) we expect negative effect of peers on delinquent identity and behavior from the beginning of the stay. In total, we hypothesize that behavior of children (cooperation, altruism and rule violation) will be negatively affected by the institution prime but it will hold only for children up to 6 months of the stay, then it will be outweighed by positive effects of the institution. Thirdly, being in the institution separated from the society increases fear and resentment towards the general society. We expect it will negatively affect beliefs of children towards the society (children from regular primary school). \\
+
+\section{References}
+Alm\aa s, I., Cappelen, A. W., S\o rensen, E. \O., \& Tungodden, B. (2010). Fairness and the development of inequality acceptance. \emph{Science}, 328(5982), 1176-1178. \\
+
+\noindent Alm\aa s, I., Cappelen, A. W., Salvanes, K. G., S\o rensen, E. \O, \& Tungodden, B. (2015). Willingness to compete: Family matters. \emph{Management Science}. \\
+
+\noindent Bauer, M., Chytilov\'a, J., \& Pertold-Gebicka, B. (2014). Parental background and other-regarding preferences in children. \emph{Experimental Economics}, 17(1), 24-46. \\
+
+\noindent Bayer, P., Hjalmarsson, R., \& Pozen, D. (2009). Building Criminal Capital behind Bars: Peer Effects in Juvenile Corrections. \emph{The Quarterly Journal of Economics}, 124(1), 105-147. \\
+
+\noindent Bettinger, Eric, and Robert Slonim. "Patience among children." \emph{Journal of Public Economics} 91.1 (2007): 343-363. \\
+
+\noindent Cohn, A., Mar\acute{e}chal, M. A., \& Noll, T. (2015). Bad boys: How criminal identity salience affects rule violation. \emph{The Review of Economic Studies}, 82(4), 1289-1308. \\
+
+\noindent Cunha, F., Heckman, J. J., Lochner, L., \& Masterov, D. V. (2006). Interpreting the evidence on life cycle skill formation. \emph{Handbook of the Economics of Education}, 1, 697-812. \\
+
+\noindent Dohmen, T., Falk, A., Huffman, D., Sunde, U., Schupp, J., \& Wagner, G. G. (2011). Individual risk attitudes: Measurement, determinants, and behavioral consequences. \emph{Journal of the European Economic Association}, 9(3), 522-550. \\
+
+\noindent Fehr, E., Bernhard, H., \& Rockenbach, B. (2008). Egalitarianism in young children. \emph{Nature}, 454(7208), 1079-1083. \\
+
+
+\noindent Harbaugh, W. T., Krause, K., \& Liday, S. J. (2003). Bargaining by children. \emph{University of Oregon Economics Working Paper}, (2002-4). \\
+
+\noindent Heckman, J. J. (2006). Skill formation and the economics of investing in disadvantaged children. \emph{Science}, 312(5782), 1900-1902. \\
+
+\noindent Walters, G. D. (2003). Changes in criminal thinking and identity in novice and experienced inmates prisonization revisited. \emph{Criminal Justice and Behavior}, 30(4), 399-421.
+
+\printbibliography
+
+\end{document} 
