@@ -1,0 +1,415 @@
+% !TEX TS-program = xelatex
+% !TEX encoding = UTF-8
+
+% This is a simple template for a XeLaTeX document using the "article" class,
+% with the fontspec package to easily select fonts.
+
+\documentclass[11pt]{article} % use larger type; default would be 10pt
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathspec}
+\usepackage{fontspec} % Font selection for XeLaTeX; see fontspec.pdf for documentation
+%\defaultfontfeatures{Mapping=tex-text} % to support TeX conventions like ``---''
+\usepackage{xunicode} % Unicode support for LaTeX character names (accents, European chars, etc)
+\usepackage{xltxtra} % Extra customizations for XeLaTeX
+\usepackage{textcomp}
+\usepackage{pdflscape} %landscape pages in pdf (for better readabiliy)
+%\usepackage{parallel} %psaní do dvou sloupcù
+
+%\usepackage[style=authoryear]{biblatex}
+%\usepackage{harvard}
+%\bibliographystyle{econometrica}
+\usepackage[backend=biber]{biblatex}
+\addbibresource{PAP.bib}
+%\renewcommand{\refname}{References}
+
+%\setmainfont[Mapping=tex-text, Numbers=Proportional, Numbers=OldStyle]{Linux Libertine O} % set the main body font (\textrm), assumes Charis SIL is installed
+%\setsansfont{Deja Vu Sans}
+%\setmonofont{Deja Vu Mono}
+%\setmathrm[Mapping=tex-text, Numbers=Proportional]{Linux Libertine O}
+
+%\setmathrm[Mapping=tex-text, Numbers=Proportional]{Constantia}
+%\setallmainfonts[Mapping=tex-text, Numbers={Lining,Proportional}]{Constantia}
+%\setmainfont[Mapping=tex-text, Numbers={OldStyle,Proportional}]{Constantia}
+
+%místo proportional dám monospaced pro tabulkové stejnì široké setallmain, setmainfont dám do tabulky a tím zmìním ten environment.
+% other LaTeX packages.....
+%\usepackage[top=3.3cm, bottom=6.6cm, right=4.33cm, left=3.67cm]{geometry} %Rozložení A
+%\usepackage[left=2cm,top=2cm,bottom=2cm,right=2cm]{geometry}
+%\usepackage{geometry} % See geometry.pdf to learn the layout options. There are lots.
+%\usepackage[top=2.4cm, bottom=4cm, right=3cm, left=3cm]{geometry} %Rozložení C
+\usepackage[top=2.5cm, bottom=2.5cm, right=2.5cm, left=2.5cm]{geometry}
+\geometry{a4paper} % or letterpaper (US) or a5paper or....
+%\usepackage[parfill]{parskip} % Activate to begin paragraphs with an empty line rather than an indent
+
+\usepackage{graphicx} % support the \includegraphics command and options
+\usepackage{fancyvrb}  % vkládání txt souboru \VerbatimInput[baselinestretch=1,fontsize=\footnotesize,numbers=left]{yourFileInSameDirectory.txt}
+%\usepackage{verbatim}
+\usepackage{multirow} % pro tabulky a spojování øádkù
+%ze STATA
+\usepackage{dcolumn}
+\usepackage{booktabs}
+\usepackage{enumerate}
+%popisky
+
+%tohle vypisuje na každou stránku hlavièku
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{Summary Pastici 2}
+%\chead{\date}
+%\lfoot{}
+%\cfoot{\thepage}
+%\rfoot{}
+%\setlength{\headheight}{14pt}
+%\renewcommand{\headrulewidth}{0.4pt}
+%\renewcommand{\footrulewidth}{0pt}
+
+\usepackage[bottom]{footmisc}
+%\footnotemargin1.6em
+\usepackage{setspace}
+%\setstretch{1.11}
+\onehalfspacing
+\widowpenalty=10000
+\clubpenalty=10000
+
+%\usepackage{natbib}
+
+% this is the environment that controls my base lists
+\renewenvironment{itemize}
+{
+    \begin{list}{• \ }{} %•
+        \setlength{\topsep}{0pt}
+        \setlength{\parskip}{0pt}
+        \setlength{\partopsep}{0pt}
+        \setlength{\parsep}{0pt}
+        \setlength{\itemsep}{0pt}
+}
+{
+    \end{list}
+}
+
+%\usepackage{enumitem}
+%\setenumerate{nolistsep}
+%\setitemize{nolistsep}
+
+%\renewcommand{\thesubsection}{\arabic{subsection}}{INDENT}{BEFORESKIP}{AFTERSKIP}{STYLE} %pøedìláme èíslování z 0.1 na 1
+\renewcommand{\thesubsection}{\arabic{section}.\alph{subsection}} %pøedìláme èíslování z 0.1 na 1
+
+%\renewcommand{\labelitemii}{$\cdot$} %snaha dostat pøed subitem nìjakou znaèku
+
+\usepackage{caption} % Customizing figure etc. captions
+\captionsetup{
+  %justification=centerlast,
+  font=small,
+  labelfont=bf,
+  figurewithin=none}
+
+
+\usepackage{hyperref}
+\hypersetup{
+pdftitle={Microeconomics II},
+pdfauthor={V},
+pdfkeywords={},
+pdfborder=false,
+bookmarksnumbered=true,
+pdfstartview=FitH,
+pdfview=FitH,
+pdfpagelayout=OneColumn,
+}
+%\usepackage[all]{hypcap}
+
+
+\usepackage{polyglossia}
+\setdefaultlanguage{english}
+%\setotherlanguages{english}
+
+%\bibliography{literature}
+%\renewcommand{\refname}{References}
+
+\title{Summary pastici 2 \\ Delinquent identity of problematic children - An economic experiment}
+\author{Lubom\'ir Cingl  \ \ \ \ \  \ V\'aclav Korbel}
+%\date{} % Activate to display a given date or no date (if empty),
+%         % otherwise the current date is printed
+\date{April 2016}
+
+%\usepackage{showframe}                  %show edges of pages
+%\usepackage{acronym} %seznam zkatek
+%\usepackage[final]{pdfpages} %pro vkládání pdf souborù
+
+%-----<<<<<<<<<<<< DOCUMENT >>>>>>>>>>>>-----
+
+%Od Hanky
+%\renewcommand{\theenumi}{\alph{enumi})}
+%\renewcommand{\labelenumi}{\theenumi}
+
+\begin{document}
+\urlstyle{same}
+\maketitle
+
+\section*{Abstract}
+
+\section*{Introduction}
+ The environment in which children grow up plays an important role (Alm\aa s et al. 2012, Bauer et al. 2014, Heckman 2006). Children may not only acquire bad behavioral and moral principles in poor environment but may also develop delinquent identities tied with those principles (Benabou and Tirole 2002). Moreover, those identities may be strengthened by parents and peers. One approach how to change such behavioral development is to place problematic children into special institutions (juvenile detention centers). There teachers, psychologists and special educators work with children to improve their development. However, it is still unclear what effect those institutions have on children. The juvenile detention centers may strengthen delinquent identities of children either through peer-effects or through separating them from the general society. Similar effects were shown with prisoners (Cohn et al. 2015). The present project investigates how detention centers affect delinquent identity and subsequently cooperative and norm-violating behavior of problematic children. We also look at how it changes over time and effects according to the type of behavioral problems. In order to do this, we run a lab in the field experiment with children and adolescents from juvenile detention centers in the Czech Republic. \\
+
+
+\section{Experimental design}
+Our overall study design combines two elements - priming and time comparison based on exogeneity of placing children into detention centers. Approach 1 (priming) will give us a clear measure of whether emphasizing an institution identity has a causal effect on outcome variables (cooperation, altruism and rule-violation). Approach 2 (time comparison) will show us how the effects of identity change over time. It is of policy relevance how interventions should be designed.
+
+
+\subsection{Treatments}
+We have employed the identity priming developed by (Cohn et al. 2015) and adjusted it slightly for the environment of detention centers. Participants are randomly assigned either to the priming treatment or the control treatment. The purpose of the priming treatment is to make the institution (juvenile detention center) salient. \\
+
+The first part of the survey contains one question on subjective well-being and three questions on standard demographics. It is followed by five priming questions reminding them the institution where they stay (e.g. "For how long have you been here?", "How the staff treats you?", "If you could change two things in your detention center, what would it be?"). They to a large extent resemble to the original protocol. The other half of the participants (control treatment) is asked general questions about TV, computer and music (e.g. "What kind of music do you like?", "Do you like more TV or computer?"). \\
+
+We have made one change. The question on reasons for placement (incarceration in the original protocol) was left out. Detention center is not only correctional but also educational institution. We decided to measure the causal effect of institution on behavior which would be affected by questions on life before the placement.  \\
+
+The second part of the questionnaire is followed by a standardized question on risk preferences (Dohmen et al. 2011) and two questions on mood. Risk preferences and mood may also be affected by the priming, therefore we control for them in regressions.
+
+\subsection{Games}
+We conduct three experimental games - the Prisoner's dilemma game, the Dictator game and a cheating task. Prisoner's dilemma game and dictator game were in the randomized order to control for the order effect and cheating task was always the third game.  \\
+
+\textbf{The Prisoner's dilemma game} - captures an individual willingness to cooperate and beliefs about cooperation of others. In this activity, child from juvenile detention centers were always randomly matched with a child from regular primary school. Then a child is endowed with 20 tokens\footnote{one token is of app. value 3 CZK (10 euro cents)} and is asked to decide if to cooperate (framed as not change tokens) or not to cooperate (take 10 tokens from the other child and get 5 tokens in exchange). First, the decision is elicited unconditionally, then we ask about first and second order beliefs\footnote{incentivized by two tokens}  and then the decision is made conditionally. The order of conditional choices is randomized. \\
+\begin{itemize}
+  \item First order beliefs (beliefs1): What a child thinks how the kid from regular primary school played. The question was formulated as following - "What do you think the other kid chose a) Not to change number of tokens or b) Change - take 10 tokens from you and add 5 to herself."
+  \item Second order beliefs (beliefs2): What a child thinks that the other kid thinks about herself. The question was formulated as following - "What a child from primary school thinks that you chose a) Not to change number of tokens or b) Change - take 10 tokens from you and add 5 to herself?"
+\end{itemize}
+\textbf{The Dictator game} - captures an individual’s altruism towards others. In this activity,
+participants are informed that they were randomly paired with a child from primary school, other than in the Prisoner's dilemma game. Then each participant is endowed with 20 tokens and should decide how to distribute tokens between himself/herself and the other kid. \\
+
+\noindent
+\textbf{The Cheating game} - captures the willingness to violate rules. In this activity, children receive a token and toss it twenty times. Each time a child tosses head, she receives a token, otherwise she does not. They report their tosses on a sheet of paper. Because they are not monitored, they can misreport their tosses.
+
+\subsection{Manipulation check}
+After playing all three games, we measure if the priming was successful. We ask participants to solve a word stem completion task. They are presented with initial letters of three words which they finish. For example, they could complete the word stem "st..." with the delinquent-related word "steal" or unrelated words such as "store". We compare the mental accessibility of delinquent-related constructs across treatments.
+
+
+\section{Hypotheses}
+
+We expect that the institution (detention center) identity priming will have three distinct impacts on identity and subsequently on the behavior through different channels. First, we expect that the institution through save environment and systematic work weakens the delinquent identity of children which positively effects behavior. However, based on previous research (Walters 2003) the identity change does not happen in first few months (until half a year). Second, during the stay children are exposed to the peers who are also problematic children. Along with research on juvenile prisoners (Bayer et al. 2009) we expect negative effect of peers on delinquent identity and behavior from the beginning of the stay. In total, we hypothesize that behavior of children (cooperation, altruism and rule violation) will be negatively affected by the institution prime but it will hold only for children up to 6 months of the stay, then it will be outweighed by positive effects of the institution. Thirdly, being in the institution separated from the society increases fear and resentment towards the general society. We expect it will negatively affect beliefs of children towards the society (children from regular primary school). \\
+
+\section{Data}
+We conducted the experiment in detention centers in the Czech Republic. Detention centers are public correctional and educational institutions where problematic children are placed based on a writ. Unlike prisons detention centers resemble more to orphanages. Children placed there do not have to commit a crime. They very often have problems with authorities (parents, teachers), truancy or aggression. The sampling period was between April 2016 and June 2016. The sample consists 308 children. The mean age is 14.3 years and length of the stay is 17 months with median only 12 months. More descriptive statistics together with randomization check are presented in Table \ref{tab:Descriptives}. Randomization check was successful.
+
+\begin{table}\footnotesize
+\begin{center}
+\caption{Descriptive statistics}
+{
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{tabular}[!h]{l  c  c | c c  c c | c}
+\hline\hline
+		&	\multicolumn{2}{c}{Full sample}	\vline &	\multicolumn{2}{c}{No prime} &	\multicolumn{2}{c}{Prime}	\vline &	Difference	\\
+Variable	&	Mean	&	Std. Dev.	& Mean	&	Std. Dev.		&	Mean	&	Std. Dev.	&	p-value	\\ \hline
+Age	&	14.33	&	1.21	&	14.35	&	1.19	&	14.31	&	1.23	&	0.78	\\
+Grade	&	7.53	&	1.20	&	7.60	&	1.13	&	7.46	&	1.26	&	0.31	\\
+Female	&	0.31 & 0.47 & 0.34 & 0.47 & 0.3 & 0.46 & 0.50	\\
+Number of siblings	&	4.38	&	3.50	&	4.31	&	3.70	&	4.45	&	3.30	&	0.73	\\
+Months in DDS	&	17.03	&	20.30	&	18.68	&	22.84	&	15.59	&	17.75	&	0.21	\\
+DDU	&	0.77	&	0.44	&	0.77	&	0.43	&	0.76	&	0.43	&	0.88	\\ \hline \hline
+\end{tabular}
+}
+\label{tab:Descriptives}
+\end{center}
+\end{table}	
+
+
+\section{Results}
+Figure \ref{gr:PD} and Figure \ref{gr:DG} report results from experimental games according to the treatment. Primed students cooperate slightly less than those not primed (27\% of cooperating to 34\%). However, the difference is not significant (p-value=0.20), similarly as differences for conditional decisions (p-value=0.18 and 0.86). It suggests that there is no general effect on children in juvenile detention centers. It could either mean that children do not posses delinquent identity or that our subtle manipulation is not strong enough to reveal the effect.
+
+\begin{figure}[!h]
+  \centering
+  \includegraphics{Pastici2_graph1.pdf}
+  \caption{Prisoners dilemma}\label{gr:PD}
+\end{figure}
+
+In the same vein, primed children share slightly more (26\% to 23\% tokens) but the difference is not significant (p-value=0.27). Moreover, students in both treatments cheat to the similar extent (keep 69\% and 67\%).
+
+\begin{figure}[!h]
+  \centering
+  \includegraphics{Pastici2_graph2.pdf}
+  \caption{Dictator and Cheating game}\label{gr:DG}
+\end{figure}
+
+Regression analysis supports previous findings. We control for mood, risk preferences, personal characteristics and family background. Priming in unconditional cooperation and dictator game becomes significant but the results are not very robust. When we cluster on institution level to control for potential correlations within institutions, coefficients turn again insignificant. Importantly, manipulation check which should confirm that priming was successful is insignificant. To sum it up, it does not seem that delinquent identity affect all children in juvenile detention centers.
+
+\begin{table}\footnotesize
+\begin{center}
+\caption{Regression analysis - Full sample}
+{
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{tabular}[h]{l  c  c  c c  c c }
+\hline\hline
+	&	(1)	&	(2)	&	(3)	&	(4)	&	(5)	&	(6)	\\
+	&	PG unconditional	&	PG cond-nocoop	&	PG cond-coop	&	DG	&	Cheat	&	Man check	\\ \hline
+	&		&		&		&		&		&		\\
+Prime	&	-0.54*	&	-0.22	&	-0.18	&	0.05*	&	0.02	&	0.05	\\
+	&	(0.29)	&	(0.26)	&	(0.34)	&	(0.03)	&	(0.02)	&	(0.07)	\\
+Mood	&	0.15**	&	0.09	&	0.13	&	-0.00	&	0.00	&	0.00	\\
+	&	(0.08)	&	(0.06)	&	(0.08)	&	(0.01)	&	(0.00)	&	(0.02)	\\
+Risk	&	0.02	&	-0.06	&	-0.04	&	0.00	&	-0.00	&	0.01	\\
+	&	(0.05)	&	(0.05)	&	(0.06)	&	(0.00)	&	(0.00)	&	(0.01)	\\
+&		&		&	&		&		&		\\
+Observations	& 256	& 267 &	266 &	267 &	241 &	265 \\
+Controls	& YES	& YES &	YES &	YES &	YES &	YES \\ \hline \hline
+\multicolumn{7}{l}{\emph{Notes}: Control variables not reported in Table - female, age, index how children behave, if a child}	\\
+\multicolumn{7}{l}{in the previous experiment, by whom was child raised and if a child was in diagnostic facility} \\	
+\multicolumn{7}{l}{before JVC. Standard errors in parentheses. *** p<0.01, ** p<0.05, * p<0.1}
+\end{tabular}
+}
+\label{tab:Treatments}
+\end{center}
+\end{table}	
+\clearpage
+\subsection{Length of stay}
+Vysledky nejsou uplne jasny. Vysledky mi outreg2 zatim vyplyvava ne jako marginal values, i kdyz mu to tak zadavam. Pak to opravim.
+
+Children are placed into the juvenile detention center (JVC) based on writ. It is typically till the end of school year. Then, there is the first possibility to reassess their case and if their behavior has improved, they may be sent back to the family or to an orphanage. Therefore, within a school year there is no selection and we can investigate if the delinquent identity is getting worse with an increasing time in juvenile detention center.\footnote{We have to collect actual data on that.}
+
+There is 109 children who have come to JVC after June 2015. Importantly, primed children mention delinquent related words significantly more often than non-primed children (column 8, Table \ref{tab:Length}) for about 0.68 word out of three. Interestingly, number of delinquent identity related words is decreasing with time in JVC.
+
+Cooperation is the only outcome variable affected by priming. Primed children tend to cooperate less the longer they are in juvenile detention center for every month (coefficient 0.3). This pattern is not present for non-primed children. Therefore, it seems that children acquire delinquent identity within first few months in JVC. Children at the beginning of the stay are positively influenced by priming but it sharply decreases within a few months. Being there almost a year means that priming decreases cooperation significantly. Adding beliefs into the regression suggests that primed children think significantly more that children from regular school do not cooperate (column 2). On the other hand, coefficient of length of the stay is still significant and of the same value.
+
+Since neither of other outcome variables is influenced by priming, it seems that delinquent identity does not affect preferences but has more to do with beliefs. For example, how society perceives them. (We have to explore it more - now it is quite shaky)
+
+\begin{table}\footnotesize
+\begin{center}
+\caption{Development within one school year}
+{
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{tabular}{l  c  c  c c  c c c c}
+\hline\hline
+	&	(1)	&	(2)	&	(3)	&	(4)	&	(5)	&	(6)	&	(7)	&	(8)	\\
+	&	\multicolumn{3}{c}{Cooperation}					&	Conditional	&	Conditional	&	Dictator	&	Cheating	&	Manipulation 	\\
+	&	\multicolumn{3}{c}{unconditional}	&	cooperation	&	no coop.	&	game	&	game	&	check	\\ \hline
+prime	&	1.59*	&	2.39**	&	1.31	&	-0.23	&	1.25	&	0.08	&	0.04	&	0.68**	\\
+	&	(0.94)	&	(1.04)	&	(1.15)	&	(0.61)	&	(1.70)	&	(0.10)	&	(0.04)	&	(0.25)	\\
+months in JVC	&	0.06	&	0.04	&	0.07	&	0.03	&	0.06	&	0.01	&	0.01	&	0.06**	\\
+	&	(0.07)	&	(0.07)	&	(0.08)	&	(0.07)	&	(0.30)	&	(0.01)	&	(0.01)	&	(0.03)	\\
+prime * months	&	-0.31**	&	-0.31**	&	-0.32**	&	-0.02	&	-0.18	&	-0.02	&	-0.01	&	-0.11**	\\
+	&	(0.14)	&	(0.13)	&	(0.15)	&	(0.12)	&	(0.30)	&	(0.02)	&	(0.01)	&	(0.04)	\\
+beliefs1	&		&	-1.36	&		&		&		&		&		&		\\
+	&		&	(0.91)	&		&		&		&		&		&		\\
+prime*beliefs1	&		&	2.58**	&		&		&		&		&		&		\\
+	&		&	(1.15)	&		&		&		&		&		&		\\
+beliefs2	&		&		&	0.47	&		&		&		&		&		\\
+	&		&		&	(0.66)	&		&		&		&		&		\\
+prime*beliefs2	&		&		&	-0.66	&		&		&		&		&		\\
+	&		&		&	(1.12)	&		&		&		&		&		\\
+
+	&		&		&		&		&		&		&		&		\\
+Observations	&	98	&	98	&	97	&	109	&	91	&	109	&	98	&	108	\\
+Controls	&	YES	&	YES	&	YES	&	YES	&	YES	&	YES	&	YES	&	YES	\\
+Inst. Cl.	&	YES	&	YES	&	YES	&	YES	&	YES	&	YES	&	YES	&	YES	\\ \hline \hline
+\multicolumn{9}{l}{Same controls as in Table \ref{tab:Treatments} including mood and risk. Standard errors in parentheses. *** p<0.01,} \\
+\multicolumn{9}{l}{** p<0.05, * p<0.1}
+\end{tabular}
+}
+\label{tab:Length}
+\end{center}
+\end{table}	
+
+\clearpage
+
+\subsection{Priming and behavioral problems}
+Priming does not need to have the same effect on every child. Imagine two extreme cases: one child has very severe psychological and behavioral problems. The second child was placed to JVC because of truancy and neglect from the family. Then, we can hypothesize that our manipulation will have different effects on both children. If delinquent identity will be more related to beliefs then we would expect higher effect for children with less severe problems.
+
+We use index which was reported by social workers in each JVC. Social workers were asked to rate each child 1-5 based on their behavior in JVC. We have lot of information about the reasons they were placed into JVC. Data on reasons are collected when a child enters JVC. Therefore, they may have been quite outdated since many children are in the JVC over two years. Moreover, many children have improved their behavior. The aforementioned index is correlated with all behavioral variables in the expected way and the strongest correlations are also with expected variables (aggression, medication for psychological problems, thefts, if a child committed a crime) reaching 0.2. We believe that this index captures their actual behavior better than information from the time of entrance.
+
+We split the sample according to mean value 2.5 on "better behaving" and "worse behaving". The results (Table \ref{tab:Bad}) suggest that the seriousness of behavioral problems is related to the creation of delinquent identity. Again, only cooperation seems to be affected and priming decreases cooperation. Children with less severe problems cooperate less than children with mild problems. When we look at "better behaving" who are the only subgroup affected by priming, then in Table \ref{tab:Good} coefficients show that drop in cooperation is related to beliefs. Children expect that children from regular primary schools will cooperate less with them because they think that they will not cooperate. In other words, beliefs of second order change with priming. It suggest that beliefs can explain change in behavior. However, these results should be taken with caution, since beliefs are endogenous with decisions in prisoner's dilemma.  (Tohle je asi blbost, nevim no. Jak jsou ty beliefs endogenni, tak tam delaj paseku. Asi je potreba ty beliefs testovat jinak.)
+
+\begin{table}\footnotesize
+\begin{center}
+\caption{Priming and behavioral problems}
+{
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{tabular}{l  c  c  c c  c c c c}
+\hline\hline
+	&	(1)	&	(2)	&	(3)	&	(4)	&	(5)	&	(6)	&	(7)	&	(8)	\\
+	&	\multicolumn{3}{c}{Cooperation}					&	Conditional	&	Conditional	&	Dictator	&	Cheating	&	Manipulation 	\\
+	&	\multicolumn{3}{c}{unconditional}	&	cooperation	&	no coop.	&	game	&	game	&	check	\\ \hline
+	&		&		&		&		&		&		&		&		\\
+	&		&		&		&		&		&		&		&		\\
+prime	&	-1.09***	&	-1.67***	&	-0.87*	&	-0.18	&	-0.31	&	0.05	&	0.03	&	0.23*	\\
+	&	(0.38)	&	(0.64)	&	(0.47)	&	(0.35)	&	(0.49)	&	(0.04)	&	(0.02)	&	(0.11)	\\
+worse	&	0.20	&	0.21	&	0.35	&	-0.13	&	0.55	&	-0.04	&	0.02	&	-0.26*	\\
+	&	(0.39)	&	(0.39)	&	(0.40)	&	(0.23)	&	(0.56)	&	(0.04)	&	(0.02)	&	(0.12)	\\
+prime*worse	&	-1.20**	&	-1.24**	&	-1.41***	&	0.06	&	-0.42	&	-0.01	&	0.01	&	0.34**	\\
+	&	(0.50)	&	(0.54)	&	(0.48)	&	(0.45)	&	(0.74)	&	(0.06)	&	(0.05)	&	(0.14)	\\
+beliefs1	&		&	0.82	&		&		&		&		&		&		\\
+	&		&	(0.61)	&		&		&		&		&		&		\\
+prime*beliefs1	&		&	0.91	&		&		&		&		&		&		\\
+	&		&	(0.75)	&		&		&		&		&		&		\\
+beliefs2	&		&		&	0.27	&		&		&		&		&		\\
+	&		&		&	(0.35)	&		&		&		&		&		\\
+prime*beliefs2	&		&		&	-0.56	&		&		&		&		&		\\
+	&		&		&	(0.61)	&		&		&		&		&		\\
+	&		&		&		&		&		&		&		&		\\
+Observations	&	256	&	256	&	254	&	267	&	266	&	267	&	241	&	265	\\ \hline \hline
+Controls	&	YES	&	YES	&	YES	&	YES	&	YES	&	YES	&	YES	&	YES	\\
+Inst. Cl.	&	YES	&	YES	&	YES	&	YES	&	YES	&	YES	&	YES	&	YES	\\ \hline \hline
+\multicolumn{9}{l}{Same controls as in Table \ref{tab:Treatments} including mood and risk. Standard errors in parentheses. *** p<0.01,} \\
+\multicolumn{9}{l}{** p<0.05, * p<0.1}
+\end{tabular}
+}
+\label{tab:Bad}
+\end{center}
+\end{table}	
+
+ \begin{table}\footnotesize
+\begin{center}
+\caption{Priming and behavioral problems - better behaving}
+{
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{tabular}{l  c  c  c c }
+\hline\hline
+	&	(1)	&	(2)	&	(3)	&	(4)	\\
+	&	\multicolumn{4}{c}{Cooperation unconditional}		 	\\ \hline
+	&		&		&		&		\\
+prime	&	-0.97**	&	-1.07***	&	-0.47	&	-1.67**	\\
+	&	(0.38)	&	(0.37)	&	(0.57)	&	(0.66)	\\
+beliefs1	&	0.38	&		&	-0.39	&		\\
+	&	(0.40)	&		&	(0.79)	&		\\
+prime*beliefs1	&		&		&	1.27	&		\\
+	&		&		&	(1.35)	&		\\
+beliefs2	&		&	0.69	&		&	1.43**	\\
+	&		&	(0.44)	&		&	(0.70)	\\
+prime*beliefs2	&		&		&		&	-1.13	\\
+	&		&		&		&	(0.89)	\\
+	&		&		&		&	\\
+observations	&	123	&	123	&	123	&	123	\\ \hline \hline
+\end{tabular}
+}
+\label{tab:Good}
+\end{center}
+\end{table}	
+
+\clearpage
+\section{References}
+Alm\aa s, I., Cappelen, A. W., S\o rensen, E. \O., \& Tungodden, B. (2010). Fairness and the development of inequality acceptance. \emph{Science}, 328(5982), 1176-1178. \\
+
+\noindent Alm\aa s, I., Cappelen, A. W., Salvanes, K. G., S\o rensen, E. \O, \& Tungodden, B. (2015). Willingness to compete: Family matters. \emph{Management Science}. \\
+
+\noindent Bauer, M., Chytilov\'a, J., \& Pertold-Gebicka, B. (2014). Parental background and other-regarding preferences in children. \emph{Experimental Economics}, 17(1), 24-46. \\
+
+\noindent Bayer, P., Hjalmarsson, R., \& Pozen, D. (2009). Building Criminal Capital behind Bars: Peer Effects in Juvenile Corrections. \emph{The Quarterly Journal of Economics}, 124(1), 105-147. \\
+
+\noindent Bettinger, Eric, and Robert Slonim. "Patience among children." \emph{Journal of Public Economics} 91.1 (2007): 343-363. \\
+
+\noindent Cohn, A., Marechal, M. A., \& Noll, T. (2015). Bad boys: How criminal identity salience affects rule violation. \emph{The Review of Economic Studies}, 82(4), 1289-1308. \\
+
+\noindent Cunha, F., Heckman, J. J., Lochner, L., \& Masterov, D. V. (2006). Interpreting the evidence on life cycle skill formation. \emph{Handbook of the Economics of Education}, 1, 697-812. \\
+
+\noindent Dohmen, T., Falk, A., Huffman, D., Sunde, U., Schupp, J., \& Wagner, G. G. (2011). Individual risk attitudes: Measurement, determinants, and behavioral consequences. \emph{Journal of the European Economic Association}, 9(3), 522-550. \\
+
+\noindent Fehr, E., Bernhard, H., \& Rockenbach, B. (2008). Egalitarianism in young children. \emph{Nature}, 454(7208), 1079-1083. \\
+
+
+\noindent Harbaugh, W. T., Krause, K., \& Liday, S. J. (2003). Bargaining by children. \emph{University of Oregon Economics Working Paper}, (2002-4). \\
+
+\noindent Heckman, J. J. (2006). Skill formation and the economics of investing in disadvantaged children. \emph{Science}, 312(5782), 1900-1902. \\
+
+\noindent Walters, G. D. (2003). Changes in criminal thinking and identity in novice and experienced inmates prisonization revisited. \emph{Criminal Justice and Behavior}, 30(4), 399-421.
+
+\printbibliography
+
+\end{document} 
